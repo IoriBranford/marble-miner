@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b20da9ba48802dd47b3c4d50b86186d1
+timeCreated: 1484865323
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MAWNS rock
+  fontNames:
+  - MAWNS rock
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
