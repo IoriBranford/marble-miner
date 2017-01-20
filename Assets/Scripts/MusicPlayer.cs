@@ -5,8 +5,7 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour {
 	static MusicPlayer _instance;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if (_instance == null) {
 			GameObject.DontDestroyOnLoad(gameObject);
 			_instance = this;
@@ -15,7 +14,11 @@ public class MusicPlayer : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
+	// Between Awake and Start is when an audio source starts playing
+
+	void Start () {
+	}
+
 	void Update () {
 	}
 }
