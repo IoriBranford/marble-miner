@@ -13,6 +13,8 @@ public class Brick : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D collision) {
 		--_health;
-		print(_health);
+		if (_health <= 0) {
+			Destroy(gameObject);
+		}
 	}
 }
