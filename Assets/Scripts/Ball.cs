@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 	public float launchForce;
-	public Paddle paddle;
+	private Paddle _paddle;
 
 	private Vector3 _fromPaddle;
 	private bool _started = false;
 
 	// Use this for initialization
 	void Start () {
-		_fromPaddle = transform.position - paddle.transform.position;
+		_paddle = GameObject.FindObjectOfType<Paddle>();
+		_fromPaddle = transform.position - _paddle.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!_started) {
-			transform.position = paddle.transform.position
+			transform.position = _paddle.transform.position
 				+ _fromPaddle;
 
 			if (Input.GetMouseButtonDown(0)) {

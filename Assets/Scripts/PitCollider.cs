@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PitCollider : MonoBehaviour {
 
-	public LevelManager levelManager;
+	private LevelManager _levelManager;
+
+	void Start () {
+		_levelManager = GameObject.FindObjectOfType<LevelManager>();
+	}
 
 	void OnTriggerEnter2D (Collider2D otherCollider) {
 		print("Trigger");
-		levelManager.LoadLevel("Win");
+		_levelManager.LoadLevel("Win");
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
