@@ -67,7 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2350ae23aca0a5f448cfeed6701614ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxDamage: 1
+  damageSprites: []
 --- !u!212 &212529838565059482
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -99,7 +100,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 172ad22f1bc019049a4fdd0d9437b51d, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
