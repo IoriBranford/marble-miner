@@ -11,11 +11,9 @@ public class PitCollider : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D otherCollider) {
-		print("Trigger");
-		_levelManager.LoadLevel("Win");
+		_levelManager.LoadLevel("Lose");
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
-		print("Collision");
 	}
 }
