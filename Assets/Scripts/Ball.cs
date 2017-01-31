@@ -35,5 +35,17 @@ public class Ball : MonoBehaviour {
 			var audioSource = GetComponent<AudioSource>();
 			audioSource.Play();
 		}
+//	}
+//
+//	void OnCollisionExit2D (Collision2D collision) {
+		if (collision.gameObject == _paddle.gameObject) {
+			var body = GetComponent<Rigidbody2D>();
+			Vector2 newVelocity = body.position -
+				collision.rigidbody.position;
+			newVelocity.Normalize();
+			newVelocity *= body.velocity.magnitude;
+			body.AddForce(body.mass * (newVelocity - body.velocity),
+					ForceMode2D.Impulse);
+		}
 	}
 }

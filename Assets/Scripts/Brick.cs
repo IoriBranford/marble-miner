@@ -5,6 +5,10 @@ using UnityEngine;
 public class Brick : MonoBehaviour {
 	private static int _NumBreakables;
 
+	public static void LevelStarted () {
+		_NumBreakables = 0;
+	}
+
 	public AudioClip crackSound;
 	public Sprite[] damageSprites;
 
@@ -32,6 +36,7 @@ public class Brick : MonoBehaviour {
 		if (spriteI >= damageSprites.Length) {
 			Destroy(gameObject);
 			--_NumBreakables;
+			print(_NumBreakables);
 
 			var levelManager =
 				GameObject.FindObjectOfType<LevelManager>();
