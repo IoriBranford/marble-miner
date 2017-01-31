@@ -3,27 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Brick : MonoBehaviour {
-	public int maxDamage;
-	private int _damage;
+	private static int _NumBreakables;
 
-	private LevelManager _levelManager;
+	private int _damage;
 
 	public Sprite[] damageSprites;
 
 	// Use this for initialization
 	void Start () {
+		if (tag == "Breakable") {
+			++_NumBreakables;
+		}
+
 		_damage = 0;
-		_levelManager = GameObject.FindObjectOfType<LevelManager>();
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
+		if (tag == "Breakable") {
+			Damage();
+		}
+	}
+
+	void Damage () {
 		++_damage;
-		if (_damage >= maxDamage) {
+		int spriteI = _damage - 1;
+		if (spriteI >= damageSprites.Length) {
 			Destroy(gameObject);
-			_levelManager.LoadNextLevel();
-		} else {
-			SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-			spriteRenderer.sprite = damageSprites[_damage - 1];
+			--_NumBreakables;
+
+			var levelManager =
+				GameObject.FindObjectOfType<LevelManager>();
+			levelManager.BrickDestroyed(_NumBreakables);
+		} else if (damageSprites[spriteI] != null) {
+			var spriteRenderer = GetComponent<SpriteRenderer>();
+			spriteRenderer.sprite = damageSprites[spriteI];
 		}
 	}
 }

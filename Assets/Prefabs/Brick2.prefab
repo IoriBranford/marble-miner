@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114913968661686814}
   m_Layer: 0
   m_Name: Brick2
-  m_TagString: Untagged
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2350ae23aca0a5f448cfeed6701614ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 2
   damageSprites:
   - {fileID: 21300008, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
 --- !u!212 &212460329646044476

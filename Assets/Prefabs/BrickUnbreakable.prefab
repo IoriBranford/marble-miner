@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 61531240671407240}
   - component: {fileID: 114121681980669508}
   m_Layer: 0
-  m_Name: Brick1
-  m_TagString: Breakable
+  m_Name: BrickUnbreakable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
