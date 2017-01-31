@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 	public float launchForce;
-	private Paddle _paddle;
 
+	private Paddle _paddle;
 	private Vector3 _fromPaddle;
 	private bool _started = false;
 
@@ -27,6 +27,13 @@ public class Ball : MonoBehaviour {
 						ForceMode2D.Impulse);
 				_started = true;
 			}
+		}
+	}
+
+	void OnCollisionEnter2D (Collision2D collision) {
+		if (_started) {
+			var audioSource = GetComponent<AudioSource>();
+			audioSource.Play();
 		}
 	}
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 public class Brick : MonoBehaviour {
 	private static int _NumBreakables;
 
-	private int _damage;
-
+	public AudioClip crackSound;
 	public Sprite[] damageSprites;
+
+	private int _damage;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class Brick : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
+		AudioSource.PlayClipAtPoint(crackSound, transform.position);
 		if (tag == "Breakable") {
 			Damage();
 		}
