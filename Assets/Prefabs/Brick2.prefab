@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2350ae23aca0a5f448cfeed6701614ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crackSound: {fileID: 8300000, guid: f0f27637794f9d34dadc15fe4aa0cca2, type: 3}
   damageSprites:
   - {fileID: 21300008, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
 --- !u!212 &212460329646044476

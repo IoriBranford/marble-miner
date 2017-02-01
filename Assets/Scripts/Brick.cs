@@ -36,7 +36,6 @@ public class Brick : MonoBehaviour {
 		if (spriteI >= damageSprites.Length) {
 			Destroy(gameObject);
 			--_NumBreakables;
-			print(_NumBreakables);
 
 			var levelManager =
 				GameObject.FindObjectOfType<LevelManager>();

@@ -21,9 +21,9 @@ public class Ball : MonoBehaviour {
 			transform.position = _paddle.transform.position
 				+ _fromPaddle;
 
-			if (Input.GetMouseButtonDown(0)) {
+			if (_paddle.autoPlay || Input.GetMouseButtonDown(0)) {
 				var body = GetComponent<Rigidbody2D>();
-				body.AddForce(new Vector2(0f, launchForce),
+				body.AddForce(new Vector2(launchForce, launchForce),
 						ForceMode2D.Impulse);
 				_started = true;
 			}
@@ -35,15 +35,15 @@ public class Ball : MonoBehaviour {
 			var audioSource = GetComponent<AudioSource>();
 			audioSource.Play();
 		}
-//	}
-//
-//	void OnCollisionExit2D (Collision2D collision) {
+
 		if (collision.gameObject == _paddle.gameObject) {
 			var body = GetComponent<Rigidbody2D>();
-			Vector2 newVelocity = body.position -
-				collision.rigidbody.position;
-			newVelocity.Normalize();
-			newVelocity *= body.velocity.magnitude;
+
+			Vector2 newVelocity = body.position
+				- collision.rigidbody.position;
+			newVelocity *= body.velocity.magnitude
+				/ newVelocity.magnitude;
+
 			body.AddForce(body.mass * (newVelocity - body.velocity),
 					ForceMode2D.Impulse);
 		}
