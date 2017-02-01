@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PitCollider : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D otherCollider) {
-		LevelManager levelManager =
-			GameObject.FindObjectOfType<LevelManager>();
-		levelManager.LoadLevel("Lose");
+		if (otherCollider.gameObject.tag == "Ball") {
+			LevelManager levelManager =
+				GameObject.FindObjectOfType<LevelManager>();
+			levelManager.LoadLevel("Lose");
+		}
 	}
 }

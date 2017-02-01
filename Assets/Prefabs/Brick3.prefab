@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212827565674433496}
   - component: {fileID: 61036558844657860}
   - component: {fileID: 114637860996770830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick3
   m_TagString: Breakable
   m_Icon: {fileID: 0}

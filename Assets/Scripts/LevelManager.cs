@@ -7,14 +7,14 @@ public class LevelManager : MonoBehaviour {
 	public void LoadLevel (string name) {
 		Debug.Log("Loading level " + name);
 		SceneManager.LoadScene(name);
-		Brick.LevelStarted();
+		StartLevel();
 	}
 
 	public void LoadNextLevel () {
 		int i = SceneManager.GetActiveScene().buildIndex + 1;
 		Debug.Log("Loading level " + i);
 		SceneManager.LoadScene(i);
-		Brick.LevelStarted();
+		StartLevel();
 	}
 
 	public void Quit () {
@@ -22,8 +22,14 @@ public class LevelManager : MonoBehaviour {
 		Application.Quit();
 	}
 
-	public void BrickDestroyed (int bricksLeft) {
-		if (bricksLeft == 0) {
+	void StartLevel () {
+		Brick.LevelStarted();
+		Gem.LevelStarted();
+	}
+
+	public void CheckNextLevel () {
+		if (Brick.NumBreakables == 0) {
+			// TODO fix gems losing collision && Gem.NumGems == 0) {
 			LoadNextLevel();
 		}
 	}
