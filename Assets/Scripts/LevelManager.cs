@@ -28,8 +28,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void CheckNextLevel () {
-		if (Brick.NumBreakables == 0) {
-			// TODO fix gems losing collision && Gem.NumGems == 0) {
+		if (Brick.NumBreakables == 0 && Gem.NumGems == 0) {
 			LoadNextLevel();
 		}
 	}

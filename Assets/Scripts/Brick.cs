@@ -47,10 +47,24 @@ public class Brick : MonoBehaviour {
 			--NumBreakables;
 
 			foreach (Transform child in transform) {
-				child.parent = transform.parent;
+				child.SetParent(transform.parent);
 				var body = child.GetComponent<Rigidbody2D>();
 				if (body != null) {
 					body.gravityScale = 1;
+				}
+
+				//workaround for bug
+				//https://fogbugz.unity3d.com/default.asp?877192_lfjq5e35puc7div9
+				{
+					foreach (var childCollider 
+						in child.GetComponents<Collider2D>()) {
+						childCollider.enabled = true;
+					}
+
+					foreach (var childBehaviour
+						in child.GetComponents<MonoBehaviour>()) {
+						childBehaviour.enabled = true;
+					}
 				}
 			}
 
