@@ -5,6 +5,8 @@ using UnityEngine;
 public class Gem : MonoBehaviour {
 	public static int NumGems;
 
+	public AudioClip pickupSound;
+
 	public static void LevelStarted () {
 		NumGems = 0;
 	}
@@ -19,6 +21,10 @@ public class Gem : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
+		if (collision.gameObject.tag == "Player") {
+			AudioSource.PlayClipAtPoint(pickupSound,
+					Camera.main.transform.position);
+		}
 		DestroyAndNotify();
 	}
 

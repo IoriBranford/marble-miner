@@ -495,12 +495,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4368085413066548, guid: 314aa89dc48206b4b8c0e2d23ed12450,
     type: 2}
   m_PrefabInternal: {fileID: 409355142}
---- !u!114 &413387584 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114455550406255280, guid: 3a2e09472d863214a8b7fdad757dbb42,
-    type: 2}
-  m_PrefabInternal: {fileID: 1563542867}
-  m_Script: {fileID: 11500000, guid: 399864c27a5c1ff42ace6f4a7514cbc0, type: 3}
 --- !u!1001 &505919111
 Prefab:
   m_ObjectHideFlags: 0
@@ -950,11 +944,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: e481b600b553b9d47be427baacd64b9d,
         type: 3}
-    - target: {fileID: 114481420610771492, guid: 6c191929a4288a148a62c8ac7c4ea436,
-        type: 2}
-      propertyPath: levelManager
-      value: 
-      objectReference: {fileID: 413387584}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c191929a4288a148a62c8ac7c4ea436, type: 2}
   m_IsPrefabParent: 0
@@ -1036,34 +1025,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4760842328482546, guid: a03c055f0cc1045469aec140a921734c, type: 2}
       propertyPath: m_RootOrder
       value: 2

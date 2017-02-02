@@ -10,6 +10,7 @@ public class Brick : MonoBehaviour {
 	}
 
 	public AudioClip crackSound;
+	public AudioClip itemDropSound;
 	public Sprite[] damageSprites;
 
 	private int _damage;
@@ -33,8 +34,9 @@ public class Brick : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
-		AudioSource.PlayClipAtPoint(crackSound, transform.position);
 		if (tag == "Breakable") {
+			AudioSource.PlayClipAtPoint(crackSound,
+					Camera.main.transform.position);
 			Damage();
 		}
 	}
@@ -46,8 +48,17 @@ public class Brick : MonoBehaviour {
 			Destroy(gameObject);
 			--NumBreakables;
 
+			if (transform.childCount > 0) {
+				AudioSource.PlayClipAtPoint(itemDropSound,
+						Camera.main.transform.position);
+			}
+
 			foreach (Transform child in transform) {
 				child.SetParent(transform.parent);
+				child.position.Set(
+						child.position.x,
+						child.position.y,
+						-child.position.z);
 				var body = child.GetComponent<Rigidbody2D>();
 				if (body != null) {
 					body.gravityScale = 1;

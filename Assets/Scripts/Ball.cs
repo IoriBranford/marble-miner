@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour {
-	public float launchForce;
+	public Vector2 launchForce;
 
 	private Paddle _paddle;
 	private Vector3 _fromPaddle;
@@ -23,15 +23,14 @@ public class Ball : MonoBehaviour {
 
 			if (_paddle.autoPlay || Input.GetMouseButtonDown(0)) {
 				var body = GetComponent<Rigidbody2D>();
-				body.AddForce(new Vector2(launchForce, launchForce),
-						ForceMode2D.Impulse);
+				body.AddForce(launchForce, ForceMode2D.Impulse);
 				_started = true;
 			}
 		}
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
-		if (_started) {
+		if (_started && collision.gameObject.tag != "Breakable") {
 			var audioSource = GetComponent<AudioSource>();
 			audioSource.Play();
 		}

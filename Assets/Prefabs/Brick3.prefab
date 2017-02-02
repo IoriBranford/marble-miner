@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crackSound: {fileID: 8300000, guid: f0f27637794f9d34dadc15fe4aa0cca2, type: 3}
+  itemDropSound: {fileID: 8300000, guid: b1e41131bdc26e8429da654f8fd11f17, type: 3}
   damageSprites:
   - {fileID: 21300006, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
   - {fileID: 21300008, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
