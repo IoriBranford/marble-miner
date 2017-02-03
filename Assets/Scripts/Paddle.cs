@@ -5,12 +5,18 @@ using UnityEngine;
 public class Paddle : MonoBehaviour {
 	public bool autoPlay;
 
-	float X_ScreenToWorld (float x_screen) {
-		return x_screen * 32f / Screen.width;
-	}
+	private float _xMin, _xMax;
 
 	// Use this for initialization
 	void Start () {
+		float stageLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
+		float stageRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+
+		var collider = GetComponent<Collider2D>();
+		Bounds bounds = collider.bounds;
+
+		_xMin = stageLeft + bounds.extents.x;
+		_xMax = stageRight - bounds.extents.x;
 	}
 
 	// Update is called once per frame
@@ -29,12 +35,13 @@ public class Paddle : MonoBehaviour {
 	}
 
 	void MouseMove () {
-		float x = X_ScreenToWorld(Input.mousePosition.x);
-		MoveTo(x);
+		Vector3 mouseWorldPos =
+			Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		MoveTo(mouseWorldPos.x);
 	}
 
 	void MoveTo (float x) {
-		x = Mathf.Clamp(x, 1, 31);
+		x = Mathf.Clamp(x, _xMin, _xMax);
 
 		Vector3 pos0 = transform.position;
 		var pos1 = new Vector3 (x, pos0.y, pos0.z);
