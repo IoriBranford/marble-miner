@@ -27,7 +27,8 @@ public class Gem : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
 			AudioSource.PlayClipAtPoint(pickupSound,
-					Camera.main.transform.position);
+					Camera.main.transform.position +
+					(Camera.main.transform.rotation * Vector3.one));
 		}
 		DestroyAndNotify();
 	}

@@ -42,7 +42,8 @@ public class Brick : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D collision) {
 		if (tag == "Breakable") {
 			AudioSource.PlayClipAtPoint(crackSound,
-					Camera.main.transform.position);
+					Camera.main.transform.position +
+					(Camera.main.transform.rotation * Vector3.one));
 			Damage();
 		}
 	}
@@ -61,7 +62,8 @@ public class Brick : MonoBehaviour {
 		if (spriteI >= damageSprites.Length) {
 			if (transform.childCount > 0) {
 				AudioSource.PlayClipAtPoint(itemDropSound,
-						Camera.main.transform.position);
+					Camera.main.transform.position +
+					(Camera.main.transform.rotation * Vector3.one));
 			}
 
 			foreach (Transform child in transform) {
