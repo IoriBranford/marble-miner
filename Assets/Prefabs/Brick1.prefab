@@ -70,6 +70,8 @@ MonoBehaviour:
   crackSound: {fileID: 8300000, guid: f0f27637794f9d34dadc15fe4aa0cca2, type: 3}
   itemDropSound: {fileID: 8300000, guid: b1e41131bdc26e8429da654f8fd11f17, type: 3}
   damageSprites: []
+  shatterParticles: {fileID: 1469829869682910, guid: b8b9d8c85e6f0d3458b5fcbfdfc8b145,
+    type: 2}
 --- !u!212 &212529838565059482
 SpriteRenderer:
   m_ObjectHideFlags: 1

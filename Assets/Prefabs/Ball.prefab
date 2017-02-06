@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchForce: {x: 16, y: 24}
+  bounceParticles: {fileID: 1469829869682910, guid: c342e8f16255f044795d8ef9eda0c1ff,
+    type: 2}
 --- !u!212 &212281496285962152
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ public class Brick : MonoBehaviour {
 	public AudioClip crackSound;
 	public AudioClip itemDropSound;
 	public Sprite[] damageSprites;
+	public GameObject shatterParticles;
 
 	private int _damage;
 
@@ -30,6 +31,11 @@ public class Brick : MonoBehaviour {
 			++NumBreakables;
 		}
 
+		for (int i = 0; i < damageSprites.Length; ++i) {
+			if (damageSprites[i] == null) {
+				Debug.LogError(gameObject.name + " missing damage sprite " + i);
+			}
+		}
 		_damage = 0;
 	}
 
@@ -42,12 +48,17 @@ public class Brick : MonoBehaviour {
 	}
 
 	void Damage () {
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+
+		GameObject particleObject = Instantiate(shatterParticles,
+				transform.position, Quaternion.identity);
+		var particleSystem = particleObject.GetComponent<ParticleSystem>();
+		var particleMain = particleSystem.main;
+		particleMain.startColor = spriteRenderer.color;
+
 		++_damage;
 		int spriteI = _damage - 1;
 		if (spriteI >= damageSprites.Length) {
-			Destroy(gameObject);
-			--NumBreakables;
-
 			if (transform.childCount > 0) {
 				AudioSource.PlayClipAtPoint(itemDropSound,
 						Camera.main.transform.position);
@@ -63,27 +74,15 @@ public class Brick : MonoBehaviour {
 				if (body != null) {
 					body.gravityScale = 1;
 				}
-
-				//workaround for bug
-				//https://fogbugz.unity3d.com/default.asp?877192_lfjq5e35puc7div9
-				{
-					foreach (var childCollider 
-						in child.GetComponents<Collider2D>()) {
-						childCollider.enabled = true;
-					}
-
-					foreach (var childBehaviour
-						in child.GetComponents<MonoBehaviour>()) {
-						childBehaviour.enabled = true;
-					}
-				}
 			}
+
+			Destroy(gameObject);
+			--NumBreakables;
 
 			var levelManager =
 				GameObject.FindObjectOfType<LevelManager>();
 			levelManager.CheckNextLevel();
 		} else if (damageSprites[spriteI] != null) {
-			var spriteRenderer = GetComponent<SpriteRenderer>();
 			spriteRenderer.sprite = damageSprites[spriteI];
 		}
 	}

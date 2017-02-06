@@ -71,6 +71,8 @@ MonoBehaviour:
   itemDropSound: {fileID: 8300000, guid: b1e41131bdc26e8429da654f8fd11f17, type: 3}
   damageSprites:
   - {fileID: 21300008, guid: 10406aa8b10948b4eb4c8eca84b27bef, type: 3}
+  shatterParticles: {fileID: 1469829869682910, guid: b8b9d8c85e6f0d3458b5fcbfdfc8b145,
+    type: 2}
 --- !u!212 &212460329646044476
 SpriteRenderer:
   m_ObjectHideFlags: 1

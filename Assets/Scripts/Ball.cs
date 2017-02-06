@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 	public Vector2 launchForce;
+	public GameObject bounceParticles;
 
 	private Paddle _paddle;
 	private Vector3 _fromPaddle;
@@ -29,10 +30,21 @@ public class Ball : MonoBehaviour {
 		}
 	}
 
+	void EmitBounceParticles (ContactPoint2D contact) {
+		GameObject particleObject = Instantiate(bounceParticles,
+			contact.point, Quaternion.LookRotation(contact.normal));
+	}
+
 	void OnCollisionEnter2D (Collision2D collision) {
 		if (_started && collision.gameObject.tag != "Breakable") {
 			var audioSource = GetComponent<AudioSource>();
 			audioSource.Play();
+		}
+
+		if (_started) {
+			foreach (ContactPoint2D contact in collision.contacts) {
+				EmitBounceParticles(contact);
+			}
 		}
 
 		if (collision.gameObject == _paddle.gameObject) {

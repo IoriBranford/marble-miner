@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour {
 	public static int NumGems;
-
+	public GameObject sparkleParticles;
 	public AudioClip pickupSound;
 
 	public static void LevelStarted () {
@@ -13,6 +13,10 @@ public class Gem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GameObject particleObject = Instantiate(sparkleParticles,
+				transform.position, Quaternion.identity);
+		particleObject.transform.SetParent(transform);
+
 		++NumGems;
 	}
 

@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e169c7398b833042b2fa08d67d94e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sparkleParticles: {fileID: 1469829869682910, guid: 8c8b831e8127d1f4899db43b5e13cfb0,
+    type: 2}
   pickupSound: {fileID: 8300000, guid: 571915bf758ecce449daf7028fca2b7e, type: 3}
 --- !u!212 &212348232074510206
 SpriteRenderer:
