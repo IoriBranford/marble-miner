@@ -4,6 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
+	private bool _finished;
+
+	void Start () {
+		_finished = false;
+	}
+
+	void Update () {
+		if (_finished) {
+			if (Input.GetMouseButtonDown(0)) {
+				LoadNextLevel();
+			}
+		}
+	}
+
 	public void LoadLevel (string name) {
 		Debug.Log("Loading level " + name);
 		SceneManager.LoadScene(name);
@@ -28,8 +42,17 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void CheckNextLevel () {
-		if (Brick.NumBreakables == 0 && Gem.NumGems == 0) {
-			LoadNextLevel();
+		if (Brick.NumBreakables == 0) {// && Gem.NumGems == 0) {
+			_finished = true;
+			var ball = GameObject.FindObjectOfType<Ball>();
+			ball.gameObject.SetActive(false);
+
+			var canvas = GameObject.FindObjectOfType<Canvas>();
+			Transform clearUI = canvas.transform.FindChild("ClearUI");
+
+			if (clearUI) {
+				clearUI.gameObject.SetActive(true);
+			}
 		}
 	}
 }

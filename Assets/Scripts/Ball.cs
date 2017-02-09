@@ -59,4 +59,11 @@ public class Ball : MonoBehaviour {
 					ForceMode2D.Impulse);
 		}
 	}
+
+	public void Respawn () {
+		var body = GetComponent<Rigidbody2D>();
+		body.velocity = Vector2.zero;
+		body.angularVelocity = 0;
+		_started = false;
+	}
 }
