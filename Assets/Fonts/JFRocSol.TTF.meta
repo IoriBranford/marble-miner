@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b20da9ba48802dd47b3c4d50b86186d1
-timeCreated: 1484865323
+guid: 2990d33014c0afd4eabf49a94330e83c
+timeCreated: 1486612381
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: MAWNS rock
+  fontName: JFRockSolid
   fontNames:
-  - MAWNS rock
+  - JFRockSolid
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
