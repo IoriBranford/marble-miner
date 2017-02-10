@@ -18,6 +18,11 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public void StartGame () {
+		Paddle.GameStarted();
+		LoadLevel("Stage1");
+	}
+
 	public void LoadLevel (string name) {
 		Debug.Log("Loading level " + name);
 		SceneManager.LoadScene(name);

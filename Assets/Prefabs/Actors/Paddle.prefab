@@ -178,7 +178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPlay: 0
-  lives: 1
   shatterParticles: {fileID: 1469829869682910, guid: b8b9d8c85e6f0d3458b5fcbfdfc8b145,
     type: 2}
   crackSound: {fileID: 8300000, guid: f0f27637794f9d34dadc15fe4aa0cca2, type: 3}

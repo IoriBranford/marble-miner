@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Paddle : MonoBehaviour {
+	public static int Lives = 3;
+
+	public static void GameStarted () {
+		Lives = 3;
+	}
+
 	public bool autoPlay;
-	public int lives = 1;
 	public GameObject shatterParticles;
 	public AudioClip crackSound;
 
@@ -64,7 +69,7 @@ public class Paddle : MonoBehaviour {
 			particleMain.startColor = spriteRenderer.color;
 		}
 
-		--lives;
+		--Lives;
 		gameObject.SetActive(false);
 	}
 

@@ -14,8 +14,7 @@ public class Gem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject particleObject = Instantiate(sparkleParticles,
-				transform.position, Quaternion.identity);
-		particleObject.transform.SetParent(transform);
+				transform.position, Quaternion.identity, transform);
 
 		++NumGems;
 	}
@@ -26,6 +25,10 @@ public class Gem : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
+			var hud = GameObject.FindObjectOfType<HUD>();
+			var spriteRenderer = GetComponent<SpriteRenderer>();
+			hud.AddGem(spriteRenderer.color);
+
 			AudioSource.PlayClipAtPoint(pickupSound,
 					Camera.main.transform.position +
 					(Camera.main.transform.rotation * Vector3.one));
