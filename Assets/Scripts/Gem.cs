@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour {
 	public static int NumGems;
-	public GameObject sparkleParticles;
-	public AudioClip pickupSound;
+	public static int MaxGems;
+	public static int CaughtGems;
 
 	public static void LevelStarted () {
 		NumGems = 0;
+		MaxGems = 0;
+		CaughtGems = 0;
 	}
+
+	public GameObject sparkleParticles;
+	public AudioClip pickupSound;
+
+	private GameObject _hudSlot;
 
 	// Use this for initialization
 	void Start () {
@@ -17,17 +24,22 @@ public class Gem : MonoBehaviour {
 				transform.position, Quaternion.identity, transform);
 
 		++NumGems;
-	}
+		++MaxGems;
 
-	// Update is called once per frame
-	void Update () {
+		var hud = GameObject.FindObjectOfType<HUD>();
+		var spriteRenderer = GetComponent<SpriteRenderer>();
+		_hudSlot = hud.AppendGemSlot(spriteRenderer.color);
 	}
 
 	void OnCollisionEnter2D (Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
 			var hud = GameObject.FindObjectOfType<HUD>();
-			var spriteRenderer = GetComponent<SpriteRenderer>();
-			hud.AddGem(spriteRenderer.color);
+			hud.FillGemSlot(_hudSlot);
+
+			++CaughtGems;
+			if (CaughtGems == MaxGems) {
+				Paddle.GiveLife();
+			}
 
 			AudioSource.PlayClipAtPoint(pickupSound,
 					Camera.main.transform.position +

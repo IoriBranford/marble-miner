@@ -4,20 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
-	public GameObject gem;
+	public GameObject gemSlot;
 
-	public void AddGem (Color color) {
-		gem = GameObject.Instantiate(gem);
+	public Sprite gemSprite;
 
-		RectTransform rectTransform = gem.GetComponent<RectTransform>();
+	public void FillGemSlot (GameObject gemSlot) {
+		var image = gemSlot.GetComponent<Image>();
+		image.sprite = gemSprite;
+	}
+
+	public GameObject AppendGemSlot (Color color) {
+		gemSlot = GameObject.Instantiate(gemSlot);
+
+		var rectTransform = gemSlot.GetComponent<RectTransform>();
 		Vector2 anchoredPosition = rectTransform.anchoredPosition;
-		anchoredPosition.x -= 32;
+		anchoredPosition.x -= rectTransform.rect.width;
 		rectTransform.anchoredPosition = anchoredPosition;
-		gem.transform.SetParent(transform, false);
 
-		var image = gem.GetComponent<Image>();
+		gemSlot.transform.SetParent(transform, false);
+
+		var image = gemSlot.GetComponent<Image>();
 		if (image != null) {
 			image.color = color;
 		}
+
+		return gemSlot;
 	}
 }

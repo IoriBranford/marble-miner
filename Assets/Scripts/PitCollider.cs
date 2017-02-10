@@ -10,7 +10,7 @@ public class PitCollider : MonoBehaviour {
 
 		yield return new WaitForSeconds(.5f);
 
-		if (Paddle.Lives > 0) {
+		if (!Paddle.IsGameOver()) {
 			paddle.Respawn();
 			ball.Respawn();
 		} else {

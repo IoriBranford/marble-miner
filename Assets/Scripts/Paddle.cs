@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Paddle : MonoBehaviour {
-	public static int Lives = 3;
+	public static int Lives = 2;
 
 	public static void GameStarted () {
-		Lives = 3;
+		Lives = 2;
+	}
+
+	public static void GiveLife () {
+		++Lives;
+	}
+
+	public static bool IsGameOver () {
+		return Lives < 0;
 	}
 
 	public bool autoPlay;
@@ -17,14 +25,17 @@ public class Paddle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		float stageLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
-		float stageRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+		float stageLeft = Camera.main.ViewportToWorldPoint(Vector3.zero).x;
+		float stageRight = Camera.main.ViewportToWorldPoint(Vector3.one).x;
 
-		var collider = GetComponent<Collider2D>();
-		Bounds bounds = collider.bounds;
+		_xMin = stageLeft;
+		_xMax = stageRight;
 
-		_xMin = stageLeft + bounds.extents.x;
-		_xMax = stageRight - bounds.extents.x;
+		foreach (var collider in GetComponents<Collider2D>()) {
+			Bounds bounds = collider.bounds;
+			_xMin = Mathf.Max(_xMin, stageLeft + bounds.extents.x);
+			_xMax = Mathf.Min(_xMax, stageRight - bounds.extents.x);
+		}
 	}
 
 	// Update is called once per frame
